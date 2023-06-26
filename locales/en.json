@@ -1,0 +1,11 @@
+{
+  "offline": "The light is not connected to the Wi-Fi or internet.",
+  "pair": {
+    "select_region": "Please select your region.",
+    "region": {
+      "eu": "Europe",
+      "us": "US",
+      "cn": "China"
+    }
+  }
+}

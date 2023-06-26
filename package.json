@@ -1,0 +1,17 @@
+{
+  "name": "com.yeelight.cloud",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.2.2",
+    "eslint": "^7.30.0",
+    "eslint-config-athom": "^2.1.1"
+  },
+  "dependencies": {
+    "homey-oauth2app": "^3.4.0-beta",
+    "tinycolor2": "^1.4.2"
+  }
+}

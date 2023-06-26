@@ -1,0 +1,81 @@
+<script type="text/javascript">
+  Homey.setTitle(Homey.__('pair.select_region'));
+  Homey.showLoadingOverlay();
+  Homey.emit('getRegion').then(region => {
+    if (region !== null) return Homey.nextView();
+    Homey.hideLoadingOverlay();
+  });
+
+  $('#regions li').click(function () {
+    const region = $(this).data('region');
+    Homey.emit('setRegion', region).catch(err => {
+      Homey.error(err);
+    });
+
+    $('#regions li').removeClass('active');
+    $(this).addClass('active');
+  });
+
+  $('#regions li:first-child').trigger('click');
+</script>
+
+<style type="text/css">
+  #regions {
+    list-style: none;
+  }
+
+  #regions li {
+    cursor: pointer;
+    display: block;
+    margin: 1em auto;
+    padding: 1em;
+    width: 50%;
+    position: relative;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 10px;
+  }
+
+  #regions li.active {
+    background: #E8F3FE;
+    border-color: #377FEF;
+  }
+
+  #regions li,
+  #regions li .flag,
+  #regions li .name {
+    transition: all 0.12s;
+  }
+
+  #regions li:hover .flag,
+  #regions li:hover .name {
+    transform: scale(1.05);
+  }
+
+  #regions li .flag {
+    display: block;
+    margin: 0.3em 0;
+    font-size: 3em;
+  }
+
+  #regions li .name {
+    display: block;
+    font-size: 1em;
+    font-weight: 500;
+  }
+</style>
+
+<ul id="regions">
+  <li data-region="eu">
+    <span class="flag">🇪🇺</span>
+    <span class="name" data-i18n="pair.region.eu"></span>
+  </li>
+  <li data-region="us">
+    <span class="flag">🇺🇸</span>
+    <span class="name" data-i18n="pair.region.us"></span>
+  </li>
+  <li data-region="cn">
+    <span class="flag">🇨🇳</span>
+    <span class="name" data-i18n="pair.region.cn"></span>
+  </li>
+</ul>
